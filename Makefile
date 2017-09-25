@@ -10,6 +10,7 @@
 YEAR := 2017
 AUTHOR := Ferenc Bencs
 INSTITUTION := Central European University
+SHORT_INSTITUTION := CEU
 
 # Do not edit past this line
 RM := rm -rf
@@ -22,12 +23,16 @@ PSFILE := $(YEAR)-Research-Diary.ps
 PDFFILE := $(YEAR)-Research-Diary.pdf
 AUXFILE := $(YEAR)-Research-Diary.aux
 OUTFILE := $(YEAR)-Research-Diary.out
+IDXFILE := $(YEAR)-Research-Diary.idx
+BIBFILE := bibliography.bib 
 
 .PHONY : clean
 
 anthology:
 	-@echo 'Creating anthology for research diary entries from the year $(YEAR)'
-	-@$(SHELL) src/create_anthology.sh "$(YEAR)" "$(AUTHOR)" "$(INSTITUTION)"
+	-@$(SHELL) src/create_anthology.sh "$(YEAR)" "$(AUTHOR)" "$(INSTITUTION)" "$(SHORT_INSTITUTION)"
+	-pdflatex $(TEXFILE)
+	-makeindex $(IDXFILE)
 	-pdflatex $(TEXFILE)
 #	-latex -interaction=batchmode -halt-on-error $(TEXFILE) 
 #	-dvips -q -o "$(PSFILE)" "$(DVIFILE)" -R0
@@ -37,6 +42,6 @@ anthology:
 
 clean:
 	-$(RM) $(TEXFILE)
-	-$(RM) $(LOGFILE) $(DVIFILE) $(PSFILE) $(AUXFILE) $(OUTFILE)
+	-$(RM) $(LOGFILE) $(DVIFILE) $(PSFILE) $(AUXFILE) $(OUTFILE) $(IDXFILE)
 	-$(RM) *.tmp
 	-@echo 'Done cleaning'
