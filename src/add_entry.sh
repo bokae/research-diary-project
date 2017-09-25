@@ -4,14 +4,13 @@ year=`date +%G`
 month=`date +%m`
 day=`date +%d`
 
-echo "Today is $year / $month / $day"
+echo "Today is $year/$month/$day"
 
 if [ ! -d "$year" ]; then
     mkdir $year
     mkdir $year/images
     cd $year
-    ln -s ../images/university_logo.eps .
-    ln -s ../images/university_logo.png .
+    ln -s ../images/university_logo.jpg .
     ln -s ../src/research_diary.sty .
     ln -s ../src/clean.sh clean
     ln -s ../src/compile_today.sh compile_today
