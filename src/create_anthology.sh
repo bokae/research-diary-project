@@ -3,6 +3,7 @@
 Year="$1"
 Author="$2"
 Institution="$3"
+ShortInstitution="$4"
 Name="$Year-Research-Diary"
 FileName=$Name".tex"
 tmpName=$Name".tmp"
@@ -34,6 +35,7 @@ echo "%" >> $FileName
 echo "\documentclass[letterpaper,11pt]{article}" >> $FileName
 echo "\newcommand{\userName}{$Author}" >> $FileName
 echo "\newcommand{\institution}{$Institution}" >> $FileName
+echo "\newcommand{\shortinstitution}{$ShortInstitution}" >> $FileName
 echo "\usepackage{research_diary}" >> $FileName
 echo " " >> $FileName
 echo "\title{Research Diary - $Year}" >> $FileName
@@ -44,8 +46,10 @@ echo "\chead{\textsc{Research Diary}}" >> $FileName
 echo "\lhead{\textsc{\userName}}" >> $FileName
 echo "\rfoot{\textsc{\thepage}}" >> $FileName
 echo "\cfoot{\textit{Last modified: \today}}" >> $FileName
-echo "\lfoot{\textsc{\institution}}" >> $FileName
+echo "\lfoot{\textsc{\shortinstitution}}" >> $FileName
 echo "\graphicspath{{$Year/}{~/research/diary/$Year/}{~/research/diary/$Year/images/}}" >> $FileName
+echo "\makeindex" >> $FileName
+
 
 echo " " >> $FileName
 echo " " >> $FileName
@@ -76,6 +80,8 @@ sed -i 's/\\newcommand/\\renewcommand/g' $tmpName
 
 cat $tmpName >> $FileName
 
+echo "\newpage" >> $FileName
+echo "\printindex" >> $FileName
 echo "\end{document}" >> $FileName
 
 if [ "$Year" == '2011' ]; then

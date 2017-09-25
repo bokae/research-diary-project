@@ -22,6 +22,7 @@
 \usepackage{textcomp}
 \usepackage{color}
 \usepackage{booktabs}
+\usepackage{makeidx}
 \usepackage[usenames,dvipsnames]{pstricks}
 \definecolor{darkblue}{RGB}{47,68,117}
 \definecolor{lightgray}{gray}{0.95}
@@ -55,7 +56,7 @@
 \lhead{\textsc{\userName}}
 \rfoot{\textsc{\thepage}}
 \cfoot{\textit{Last modified: \today}}
-\lfoot{\textsc{\institution}}
+\lfoot{\textsc{\shortinstitution}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%% NEW COMMANDS %%%%%%%%%%%%%%
@@ -72,10 +73,10 @@
 
 \newcommand{\logoPNG}{%
   \noindent % University Logo
-  \begin{wrapfigure}{r}{0.1\textwidth}
+  \begin{wrapfigure}{r}{0.3\textwidth}
     \vspace{-38pt}
     \begin{center}
-      \includegraphics[width=0.1\textwidth]{university_logo.jpg}
+      \includegraphics[width=0.3\textwidth]{university_logo.jpg}
     \end{center}
     \vspace{-100pt}
   \end{wrapfigure}

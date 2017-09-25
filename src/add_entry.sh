@@ -30,4 +30,13 @@ if [ -f "$filename" ]; then
 fi
 
 cp ../src/entry.tex $filename
+
+
+export LC_ALL=C
+sed -i "s/@year/$year/g" $filename
+sed -i "s/@MONTH/`date +%B`/g" $filename
+sed -i "s/@dday/$day/g" $filename
+sed -i "s/@day/`date +%e`/g" $filename
+unset LC_ALL
+
 echo "Finished adding $filename to $year."
