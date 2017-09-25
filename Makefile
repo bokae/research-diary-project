@@ -16,15 +16,17 @@ SHORT_INSTITUTION := CEU
 RM := rm -rf
 SHELL := /bin/bash
 
-TEXFILE := $(YEAR)-Research-Diary.tex
-LOGFILE := $(YEAR)-Research-Diary.log
-DVIFILE := $(YEAR)-Research-Diary.dvi
-PSFILE := $(YEAR)-Research-Diary.ps
-PDFFILE := $(YEAR)-Research-Diary.pdf
-AUXFILE := $(YEAR)-Research-Diary.aux
-OUTFILE := $(YEAR)-Research-Diary.out
-IDXFILE := $(YEAR)-Research-Diary.idx
+BASENAME = $(YEAR)-Research-Diary
+
+TEXFILE := $(BASENAME).tex
+LOGFILE := $(BASENAME).log
+PDFFILE := $(BASENAME).pdf
+AUXFILE := $(BASENAME).aux
+OUTFILE := $(BASENAME).out
+IDXFILE := $(BASENAME).idx
 BIBFILE := bibliography.bib 
+INDFILE := $(BASENAME).ind
+
 
 .PHONY : clean
 
@@ -42,6 +44,6 @@ anthology:
 
 clean:
 	-$(RM) $(TEXFILE)
-	-$(RM) $(LOGFILE) $(DVIFILE) $(PSFILE) $(AUXFILE) $(OUTFILE) $(IDXFILE)
+	-$(RM) $(LOGFILE) $(DVIFILE) $(PSFILE) $(AUXFILE) $(OUTFILE) $(IDXFILE) $(INDFILE) $(BASENAME).ilg
 	-$(RM) *.tmp
 	-@echo 'Done cleaning'
