@@ -34,7 +34,7 @@ echo "%" >> $FileName
 echo "\documentclass[letterpaper,11pt]{article}" >> $FileName
 echo "\newcommand{\userName}{$Author}" >> $FileName
 echo "\newcommand{\institution}{$Institution}" >> $FileName
-echo "\usepackage{researchdiary}" >> $FileName
+echo "\usepackage{research_diary}" >> $FileName
 echo " " >> $FileName
 echo "\title{Research Diary - $Year}" >> $FileName
 echo "\author{$Author}" >> $FileName
