@@ -1,15 +1,15 @@
 # Custom Makefile for Compiling Research Diaries
 # ----------------------------------------------
 #
-#  Author:   Mikhail Klassen
+#  Author:   Mikhail Klassen, Eszter Bokányi
 #  Email:    klassm@mcmaster.ca
 #  Created:  21 November 2011
 #  Modified: 3 January 2012
 
 # Set the diary year you wish to compile and user info
 YEAR := 2017
-AUTHOR := FirstName LastName
-INSTITUTION := InstitutionName
+AUTHOR := Ferenc Bencs
+INSTITUTION := Central European University
 
 # Do not edit past this line
 RM := rm -rf
