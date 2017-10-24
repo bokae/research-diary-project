@@ -12,4 +12,6 @@ then
 	kile $year"/"$filename&
 else
 	"./"add_entry
+	kile $year"/"$filename&
 fi
+
