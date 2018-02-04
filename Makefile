@@ -2,9 +2,9 @@
 # ----------------------------------------------
 #
 #  Author:   Mikhail Klassen, Eszter Bokányi
-#  Email:    klassm@mcmaster.ca
+#  Email:    klassm@mcmaster.ca, e.bokanyi@gmail.com
 #  Created:  21 November 2011
-#  Modified: 3 January 2012
+#  Modified: 31 January 2018
 
 # Set the diary year you wish to compile and user info
 YEAR := 2017
@@ -16,34 +16,27 @@ SHORT_INSTITUTION := CEU
 RM := rm -rf
 SHELL := /bin/bash
 
-BASENAME = $(YEAR)-Research-Diary
-
-TEXFILE := $(BASENAME).tex
-LOGFILE := $(BASENAME).log
-PDFFILE := $(BASENAME).pdf
-AUXFILE := $(BASENAME).aux
-OUTFILE := $(BASENAME).out
-IDXFILE := $(BASENAME).idx
-BIBFILE := bibliography.bib 
-INDFILE := $(BASENAME).ind
-
-
 .PHONY : clean
 
+anthology:  BASENAME=$(YEAR)-Research-Diary
+project: BASENAME=$(name)-Research-Diary
+
 anthology:
+	BASENAME=$(YEAR)-Research-Diary
 	-@echo 'Creating anthology for research diary entries from the year $(YEAR)'
 	-@$(SHELL) src/create_anthology.sh "$(YEAR)" "$(AUTHOR)" "$(INSTITUTION)" "$(SHORT_INSTITUTION)"
-	-pdflatex $(TEXFILE)
-	-makeindex $(IDXFILE)
-	-pdflatex $(TEXFILE)
-#	-latex -interaction=batchmode -halt-on-error $(TEXFILE) 
-#	-dvips -q -o "$(PSFILE)" "$(DVIFILE)" -R0
-#	-ps2pdf "$(PSFILE)" "$(PDFFILE)"
-	-evince $(PDFFILE)
+	-pdflatex $(BASENAME).tex
+	-makeindex $(BASENAME).idx
+	-pdflatex $(BASENAME).tex
+	-$(RM) *.ind *.texr *.tex *.tmp *.log *.out *.tmp *.ilg *.idx *.blg *.bbl *.aux *.swp	
+	-evince $(BASENAME).pdf
 
+project:
+	-@echo 'Creating anthology for research diary entries for the project "$(name)"'
+	-@$(SHELL) src/create_project_diary.sh "$(name)" "$(YEAR)" "$(AUTHOR)" "$(INSTITUTION)" "$(SHORT_INSTITUTION)"
+	-pdflatex $(BASENAME).tex
+	-makeindex $(BASENAME).idx
+	-pdflatex $(BASENAME).tex
+	-$(RM) *.ind *.texr *.tex *.tmp *.log *.out *.tmp *.ilg *.idx *.blg *.bbl *.aux *.swp	
+	-evince $(BASENAME).pdf
 
-clean:
-	-$(RM) $(TEXFILE)
-	-$(RM) $(LOGFILE) $(DVIFILE) $(PSFILE) $(AUXFILE) $(OUTFILE) $(IDXFILE) $(INDFILE) $(BASENAME).ilg
-	-$(RM) *.tmp
-	-@echo 'Done cleaning'

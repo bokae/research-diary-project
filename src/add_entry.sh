@@ -14,6 +14,10 @@ if [ ! -d "$year" ]; then
     ln -s ../src/research_diary.sty .
     ln -s ../src/clean.sh clean
     ln -s ../src/compile_today.sh compile_today
+    for inp in `cat ../src/include | grep -v "#"`
+    do
+        ln -s "../src/"$inp".tex" .
+    done
     cd ..
 fi
 
@@ -37,6 +41,10 @@ sed -i "s/@year/$year/g" $filename
 sed -i "s/@MONTH/`date +%B`/g" $filename
 sed -i "s/@dday/$day/g" $filename
 sed -i "s/@day/`date +%e`/g" $filename
+inp=$(cat ../src/include | grep -v "#" | sed -r 'N;s/\n/\#/g' |sed -r 's/([^\#]*)/\\\\input{\1}/g')
+echo -e "s/@inputs/$inp/g" 
+sed -ir "s/@inputs/$inp/g" $filename
+sed -ir "s/\#/\n/g" $filename	
 unset LC_ALL
 
 echo "Finished adding $filename to $year."
