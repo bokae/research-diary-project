@@ -9,9 +9,9 @@ filename=$year-$month-$day.tex
 
 if [ -e $year"/"$filename ]
 then
-	kile $year"/"$filename&
+	nohup kile $year"/"$filename > /dev/null 2>&1 & 
 else
 	"./"add_entry
-	kile $year"/"$filename&
+	nohup kile $year"/"$filename > /dev/null 2>&1 &
 fi
 
