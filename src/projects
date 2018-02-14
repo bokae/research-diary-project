@@ -1,8 +1,4 @@
 # this file links tex files to projects
 # used for project-based compilation
-2018/2018-02-04.tex,something
-2017/2017-10-10.tex,something
-2017/2017-10-31.tex,something
-2017/2017-10-10.tex,anything
-2017/2017-10-24.tex,anything
-2018/2018-02-04.tex,manifold
+# 2018/2018-02-04.tex,manifold
+

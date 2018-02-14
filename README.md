@@ -1,44 +1,63 @@
-research-diary-project
----
+This proejct uses LaTeX to keep a research diary on your Linux system, with useful tools and scripts to simplify the process. The project is forked from mikhailklassen's research diary, but there are some major new features here.
 
-Use TeX/LaTeX to keep a research diary on your UNIX/Linux system, with useful tools and scripts to simplify the process.
+## Adding entries
 
-If you plan to include images that are in pdf, jpg, or png format, and hence will be compiling using
-pdflatex, you must modify researchdiary.sty. If you stick to eps files, then everything may be left as is.
+Run `./today` from the source directory of the repository. This will create a new file within the current year's directory named `current_date.tex` (e.g. `2017-09-04.tex`). Then it opens the file in kile.
 
-Adding entries
----
-To add a new entry, execute add_entry in the main diary directory. If this is the first time adding an
-entry, a directory will be created for the current year, as well as an images subdirectory. The style
-file for the research diary (researchdiary.sty) as well as the university logo will be soft-linked into
-the directory for the current year. A script that compiles the entry for the current day will also be
-soft-linked into the same directory.
+If you run `./today`, but the day's file already exists, it skips the fle creation, and only opens the document in Kile for editing.
 
-After running add_entry, enter the directory for the current year and modify today's entry with the 
-text editor of your choice, e.g. vim, emacs, or kile.
+Place your images within subfolders named after the date in in the `images` directory.
 
-I also use a subfolder called images/, and within images/ I have subfolders for each day
-as necessary. e.g.
+### Project names
 
-    images/2011-10-19/
+You can add project names to your entries with the `./today` command. Usage may differ depending on the scenario. At first call, you can use
 
-This avoids potential filename conflicts if I decide to create a figure for one day and simply name it
-'graph.eps'
+	$ ./today project1 project2 etc.
+	
+which will add the corresponding lines to `./src/projects` (see below).
 
-There is no script to automatically create these image subdirectories to avoid littering the main image
-directory with many empty subdirectories.
+Or if you would like to add project tags later, then you can use
 
-Creating anthologies
----
+	$ ./today -p project1 project2 etc.
+	
+which will write the necessary lines to `./src/projects`, but won't open the file itself.
 
-At the end of the year, to create a master file with all the entries of that year, you must modify the
-Makefile, specifying the year you wish to compile, and setting your name and institution. After this,
-save your modified Makefile and from the research diary main directory type
+## Compiling the day's entry
+
+There is a possiblity to compile the day's entry standalone with the `./compile_today.sh` script.
+
+## Includes
+
+You can put your favourite commands and environments into separate files that will be included into all of your generated tex. Just type the filenames without the `.tex` ending into `src/include` line by line.
+
+## Creating anthologies
+
+### Yearly
+
+At the end of the year, to create a master file with all the entries of that year, you must modify the Makefile, specifying the year you wish to compile, and setting your name and institution. After this, save your modified Makefile and from the research diary main directory type
 
 	$ make anthology
 
-This will create a PDF will all the entries from the year specified. To clean up you main directory after
-compilation, type
+This will create a PDF will all the entries from the year specified. 
+
+
+## By project
+
+You can add tags to your diary entries, and later compile files based on that specific tag.
+
+The file `projects` links the files to the project names. You still have to add the entries manually, and you have to include the yearly folder name before the filename. e.g.
+
+	$ 2018/2018-02-04.tex,some_project
+
+Then to compile files belonging to that project, use
+
+	$ make project name=some_project
+
+This will create a PDF containing all entries.
+
+## Cleaning
+
+To clean up you main directory after compilation, type
 
 	$ make clean
 
