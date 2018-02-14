@@ -1,4 +1,4 @@
-This proejct uses LaTeX to keep a research diary on your Linux system, with useful tools and scripts to simplify the process. The project is forked from mikhailklassen's research diary, but there are some major new features here.
+This project uses LaTeX to keep a research diary on your Linux system, with useful tools and scripts to simplify the process. It is forked from mikhailklassen's research diary, but there are some major new features here.
 
 ## Adding entries
 
