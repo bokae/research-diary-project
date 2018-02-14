@@ -45,9 +45,11 @@ This will create a PDF will all the entries from the year specified.
 
 You can add tags to your diary entries, and later compile files based on that specific tag.
 
-The file `projects` links the files to the project names. You still have to add the entries manually, and you have to include the yearly folder name before the filename. e.g.
+The file `projects` links the files to the project names. For older entries, you still have to add the entries manually, and you have to include the yearly folder name before the filename. e.g.
 
 	$ 2018/2018-02-04.tex,some_project
+	
+But `./today` script is capable of automatically adding project tags, see above.
 
 Then to compile files belonging to that project, use
 
