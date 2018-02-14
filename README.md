@@ -2,7 +2,7 @@ This project uses LaTeX to keep a research diary on your Linux system, with usef
 
 ## Adding entries
 
-Run `./today` from the source directory of the repository. This will create a new file within the current year's directory named `current_date.tex` (e.g. `2017-09-04.tex`). Then it opens the file in kile.
+Run `./today` from the source directory of the repository. This will create a new file within the current year's directory named `current_date.tex` (e.g. `2017-09-04.tex`). Then it opens the file in Kile (replace your favourite TeX editor, if necessary).
 
 If you run `./today`, but the day's file already exists, it skips the fle creation, and only opens the document in Kile for editing.
 
