@@ -24,7 +24,7 @@ which will write the necessary lines to `./src/projects`, but won't open the fil
 
 ## Compiling the day's entry
 
-There is a possiblity to compile the day's entry standalone with the `./compile_today.sh` script.
+There is a possiblity to compile the day's entry standalone with the `./compile_today.sh` script. But usually, just use your TeX editors commands to do the trick while editing.
 
 ## Includes
 
