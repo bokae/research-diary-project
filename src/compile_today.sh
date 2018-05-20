@@ -4,10 +4,7 @@ year=`date +%G`
 month=`date +%m`
 day=`date +%d`
 
-TEXFILE=$year-$month-$day.tex
-PSFILE=$year-$month-$day.ps
-DVIFILE=$year-$month-$day.dvi
-PDFFILE=$year-$month-$day.pdf
+FILE=$year-$month-$day
 
 echo "Compiling $TEXFILE."
 
@@ -15,6 +12,8 @@ echo "Compiling $TEXFILE."
 #dvips -q -o "$PSFILE" "$DVIFILE" -R0
 #ps2pdf "$PSFILE" "$PDFFILE"
 
-pdflatex $TEXFILE $PDFFILE
+pdflatex $FILE
+bibtex --include-directory="../biblio" $FILE
+pdflatex $FILE 
 
 rm -f *.out *.dvi *.ps *.tex.backup *~ *.aux *.log

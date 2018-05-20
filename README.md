@@ -24,11 +24,17 @@ which will write the necessary lines to `./src/projects`, but won't open the fil
 
 ## Compiling the day's entry
 
-There is a possiblity to compile the day's entry standalone with the `./compile_today.sh` script. But usually, just use your TeX editors commands to do the trick while editing.
+There is a possiblity to compile the day's entry standalone with the `./today compile` command. But usually, just use your TeX editors commands to do the trick while editing. Do not forget BibTeX compilation for your references!
 
 ## Includes
 
 You can put your favourite commands and environments into separate files that will be included into all of your generated tex. Just type the filenames without the `.tex` ending into `src/include` line by line.
+
+## Bibliography management
+
+There is a folder `biblio` in the root folder of the repository. The bib files intended for use in this project are placed here.
+
+In the `src/bibinclude` file, the lines list the bibliography files to include in current project/in the current day's files. They are going to be added with `biblatex`'s `\addbibresource{...}` command.
 
 ## Creating anthologies
 

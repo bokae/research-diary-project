@@ -44,6 +44,9 @@ sed -i "s/@day/`date +%e`/g" $filename
 inp=$(cat ../src/include | grep -v "#" | sed -r 'N;s/\n/\#/g' |sed -r 's/([^\#]*)/\\\\input{\1}/g')
 echo -e "s/@inputs/$inp/g" 
 sed -ir "s/@inputs/$inp/g" $filename
+binp=$(cat ../src/bibinclude | grep -v "#" | sed -r 'N;s/\n/\#/g' |sed -r 's/([^\#]*)/\\\\addbibresource{..\\\/biblio\\\/\1}/g')
+echo -e "s/@binputs/$binp/g" 
+sed -ir "s/@binputs/$binp/g" $filename
 sed -ir "s/\#/\n/g" $filename	
 unset LC_ALL
 

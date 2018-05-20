@@ -10,7 +10,13 @@ filename=$year-$month-$day.tex
 if [ -e $year"/"$filename ]
 # if there is already a file for today
 then
-	if [ "$1" == '-p' ]
+	if [ "$1" == 'compile' ]
+	then
+		cd $year
+		../src/compile_today.sh
+		cd ..
+		evince $year/$filename 
+	elif [ "$1" == '-p' ]
 	# if we would only like to add a project name	
 	then
 		echo -e $year"/"$filename","$2 >> src/projects

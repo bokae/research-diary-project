@@ -7,7 +7,7 @@
 #  Modified: 31 January 2018
 
 # Set the diary year you wish to compile and user info
-YEAR := 2017
+YEAR := 2018
 AUTHOR := Ferenc Bencs
 INSTITUTION := Central European University
 SHORT_INSTITUTION := CEU
@@ -28,6 +28,8 @@ anthology:
 	-pdflatex $(BASENAME).tex
 	-makeindex $(BASENAME).idx
 	-pdflatex $(BASENAME).tex
+	-bibtex $(BASENAME).aux
+	-pdflatex $(BASENAME).tex
 	-$(RM) *.ind *.texr *.tex *.tmp *.log *.out *.tmp *.ilg *.idx *.blg *.bbl *.aux *.swp	
 	-evince $(BASENAME).pdf
 
@@ -36,6 +38,8 @@ project:
 	-@$(SHELL) src/create_project_diary.sh "$(name)" "$(YEAR)" "$(AUTHOR)" "$(INSTITUTION)" "$(SHORT_INSTITUTION)"
 	-pdflatex $(BASENAME).tex
 	-makeindex $(BASENAME).idx
+	-pdflatex $(BASENAME).tex
+	-bibtex $(BASENAME).aux
 	-pdflatex $(BASENAME).tex
 	-$(RM) *.ind *.texr *.tex *.tmp *.log *.out *.tmp *.ilg *.idx *.blg *.bbl *.aux *.swp	
 	-evince $(BASENAME).pdf
